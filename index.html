@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boutique Jeux & Cartes PSN</title>
+<style>
+    * {margin:0; padding:0; box-sizing:border-box;}
+    html {scroll-behavior: smooth;}
+    body {
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        background-color: #121212;
+        color: #fff;
+        line-height: 1.6;
+    }
+
+    header {
+        background: linear-gradient(90deg, #ff1a1a, #ff4d4d);
+        padding: 25px;
+        text-align: center;
+        color: #fff;
+        font-size: 2em;
+        font-weight: bold;
+        letter-spacing: 1px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    nav {
+        background-color: #1a1a1a;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 12px 0;
+        position: sticky;
+        top: 70px;
+        z-index: 999;
+    }
+
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 5px 15px;
+        font-weight: bold;
+        transition: color 0.3s, transform 0.3s;
+    }
+
+    nav a:hover {
+        color: #ff1a1a;
+        transform: scale(1.1);
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: 25px auto;
+        padding: 0 20px;
+    }
+
+    h2 {
+        border-left: 5px solid #ff1a1a;
+        padding-left: 10px;
+        margin-bottom: 15px;
+        font-size: 1.5em;
+    }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .product {
+        background-color: #1e1e1e;
+        border-radius: 15px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .product:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(255,26,26,0.4);
+    }
+
+    .product-name {
+        font-size: 1.1em;
+        margin-bottom: 15px;
+        font-weight: bold;
+    }
+
+    .product-price {
+        background-color: #ff1a1a;
+        color: #fff;
+        text-decoration: none;
+        text-align: center;
+        padding: 12px;
+        border-radius: 12px;
+        font-weight: bold;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .product-price:hover {
+        background-color: #ff4d4d;
+        transform: scale(1.05);
+    }
+
+    footer {
+        text-align: center;
+        padding: 25px;
+        background-color: #1a1a1a;
+        margin-top: 40px;
+        font-size: 0.95em;
+        color: #aaa;
+    }
+
+    footer a {
+        color: #ff1a1a;
+        text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+        header {font-size: 1.5em; padding: 20px;}
+        h2 {font-size: 1.3em;}
+    }
+</style>
+</head>
+<body>
+
+<header>🎮 Boutique Jeux & Cartes PSN 🎮</header>
+
+<nav>
+    <a href="#cartes">Cartes PSN</a>
+    <a href="#jeux">Jeux</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<div class="container">
+    <h2 id="cartes">Cartes PSN</h2>
+    <div class="products-grid">
+        <div class="product">
+            <div class="product-name">Carte PSN 10 €</div>
+            <a class="product-price" href="https://wa.me/212662182959?text=Je+veux+acheter+la+Carte+PSN+10+€" target="_blank">130 DH</a>
+        </div>
+        <div class="product">
+            <div class="product-name">Carte PSN 20 €</div>
+            <a class="product-price" href="https://wa.me/212662182959?text=Je+veux+acheter+la+Carte+PSN+20+€" target="_blank">240 DH</a>
+        </div>
+        <div class="product">
+            <div class="product-name">Carte PSN 50 €</div>
+            <a class="product-price" href="https://wa.me/212662182959?text=Je+veux+acheter+la+Carte+PSN+50+€" target="_blank">530 DH</a>
+        </div>
+        <div class="product">
+            <div class="product-name">Carte PSN 80 €</div>
+            <a class="product-price" href="https://wa.me/212662182959?text=Je+veux+acheter+la+Carte+PSN+80+€" target="_blank">820 DH</a>
+        </div>
+        <div class="product">
+            <div class="product-name">Carte PSN 100 €</div>
+            <a class="product-price" href="https://wa.me/212662182959?text=Je+veux+acheter+la+Carte+PSN+100+€" target="_blank">1100 DH</a>
+        </div>
+    </div>
+
+    <h2 id="jeux">Jeux</h2>
+    <div class="products-grid">
+        <div class="product">
+            <div class="product-name">Red Dead Redemption 2 (PS4/Xbox/PC)</div>
+            <a class="product-price" href="https://wa.me/212662182959?text=Je+veux+acheter+Red+Dead+Redemption+2" target="_blank">250 DH</a>
+        </div>
+        <div class="product">
+            <div class="product-name">FC 25 PC</div>
+            <a class="product-price" href="https://wa.me/212662182959?text=Je+veux+acheter+FC+25+PC" target="_blank">150 DH</a>
+        </div>
+        <div class="product">
+            <div class="product-name">FC 25 PS5</div>
+            <a class="product-price" href="https://wa.me/212662182959?text=Je+veux+acheter+FC+25+PS5" target="_blank">350 DH</a>
+        </div>
+    </div>
+</div>
+
+<footer id="contact">
+    Paiement simple par Cash Plus ou CIH | Livraison rapide<br>
+    Contact WhatsApp : <a href="https://wa.me/212662182959">+212 66 218 2959</a>
+</footer>
+
+</body>
+</html>
