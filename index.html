@@ -97,16 +97,23 @@ h2 {
     transform:scale(1.05) translateY(-5px);
     box-shadow:0 0 20px #ff1a1a,0 0 40px #ff4d4d;
 }
-.product-name {font-size:1.1em; margin-bottom:15px; font-weight:bold; text-shadow:0 0 5px #ff1a1a;}
+.product-name {
+    font-size: 1.1em;
+    margin: 25px 0 15px; /* marge en haut augmentée */
+    font-weight: bold;
+    text-shadow: 0 0 5px #ff1a1a;
+}
+
 .badge {
-    position:absolute;
-    top:15px;
-    right:15px;
-    padding:6px 10px;
-    border-radius:10px;
-    font-size:0.85em;
-    font-weight:bold;
-    text-shadow:0 0 5px #000;
+    position: absolute;
+    top: 8px;       /* un peu plus haut qu’avant */
+    right: 8px;     /* collé au bord droit */
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 0.75em; /* légèrement plus petit */
+    font-weight: bold;
+    text-shadow: 0 0 5px #000;
+    z-index: 2;     /* reste au-dessus mais pas trop envahissant */
 }
 .instock {background:#2ecc71; color:#fff; box-shadow:0 0 10px #2ecc71;}
 .sold {background:#444; color:#ddd; box-shadow:0 0 5px #000;}
