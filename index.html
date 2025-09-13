@@ -4,67 +4,71 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="WunderShop - Boutique jeux vidéo et cartes PSN. Livraison instantanée, paiement sécurisé.">
-<title>WunderShop - e-Boutique</title>
+<title>WunderShop – Jeux & cartes cadeaux</title>
 <style>
-/* Reset et base */
 * {margin:0; padding:0; box-sizing:border-box;}
 html {scroll-behavior:smooth;}
 body {
     font-family:'Segoe UI', Tahoma, sans-serif;
-    background:#0d0d0d;
     color:#fff;
-    line-height:1.6;
+    background:#0d0d0d;
+    overflow-x:hidden;
 }
 
-/* Animations globales */
-@keyframes fadeIn {from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);}}
-@keyframes slideDown {from {transform:translateY(-100%);} to {transform:translateY(0);}}
-@keyframes fadeUp {to {opacity:1; transform:translateY(0);}}
+/* Background animé néon fluide */
+body::before {
+    content:'';
+    position:fixed;
+    top:0; left:0;
+    width:200%; height:200%;
+    background:radial-gradient(circle at 20% 30%, #ff1a1a, transparent 25%),
+               radial-gradient(circle at 80% 70%, #ff4d4d, transparent 25%);
+    background-size:400% 400%;
+    animation:lightFlow 20s linear infinite;
+    z-index:-1;
+}
+@keyframes lightFlow {
+    0% {background-position:0 0, 0 0;}
+    100% {background-position:100% 100%, 100% 100%;}
+}
 
-/* Header */
+/* Header moderne */
 header {
-    background: linear-gradient(90deg,#ff1a1a,#ff4d4d);
-    padding:25px;
-    text-align:center;
-    font-size:2em;
-    font-weight:bold;
-    letter-spacing:1px;
-    position:sticky;
+    position:fixed;
     top:0;
+    width:100%;
     z-index:1000;
-    box-shadow:0 0 20px rgba(255,26,26,0.7);
-    animation:slideDown 1s ease;
-    text-shadow:0 0 10px #ff1a1a,0 0 20px #ff4d4d;
+    backdrop-filter: blur(12px);
+    background: rgba(13,13,13,0.7);
+    box-shadow:0 0 15px rgba(0,0,0,0.5);
 }
-
-/* Navigation */
-nav {
-    background:#111;
+.header-container {
+    max-width:1000px;
+    margin:0 auto;
     display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    padding:12px 0;
-    position:sticky;
-    top:70px;
-    z-index:999;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
 }
-nav a {
+.logo {
+    font-size:1.8em;
+    font-weight:bold;
+    color:#ff1a1a;
+    text-shadow:0 0 10px #ff4d4d;
+}
+.menu a {
     color:#fff;
     text-decoration:none;
-    margin:5px 15px;
+    margin-left:20px;
     font-weight:bold;
-    transition: color 0.3s, transform 0.3s, text-shadow 0.3s;
+    transition: color 0.3s, transform 0.3s;
 }
-nav a:hover {
-    color:#ff4d4d;
-    transform:scale(1.1);
-    text-shadow:0 0 10px #ff1a1a;
-}
+.menu a:hover {color:#ff4d4d; transform:scale(1.1);}
 
 /* Container */
 .container {
     max-width:1000px;
-    margin:25px auto;
+    margin:120px auto 50px auto;
     padding:0 20px;
 }
 h2 {
@@ -94,32 +98,16 @@ h2 {
     transition: transform 0.3s, box-shadow 0.3s;
 }
 .product:hover {
-    transform:scale(1.05) translateY(-5px);
-    box-shadow:0 0 20px #ff1a1a,0 0 40px #ff4d4d;
+    transform:scale(1.08) rotate(-1deg);
+    box-shadow:0 0 25px #ff1a1a,0 0 50px #ff4d4d;
 }
-.product-name {
-    font-size: 1.1em;
-    margin: 25px 0 15px; /* marge en haut augmentée */
-    font-weight: bold;
-    text-shadow: 0 0 5px #ff1a1a;
-}
-
-.badge {
-    position: absolute;
-    top: 8px;       /* un peu plus haut qu’avant */
-    right: 8px;     /* collé au bord droit */
-    padding: 4px 8px;
-    border-radius: 8px;
-    font-size: 0.75em; /* légèrement plus petit */
-    font-weight: bold;
-    text-shadow: 0 0 5px #000;
-    z-index: 2;     /* reste au-dessus mais pas trop envahissant */
-}
+.product-name {font-size:1.1em; margin:25px 0 15px; font-weight:bold; text-shadow:0 0 5px #ff1a1a;}
+.badge {position:absolute; top:8px; right:8px; padding:4px 8px; border-radius:8px; font-size:0.75em; font-weight:bold; text-shadow:0 0 5px #000;}
 .instock {background:#2ecc71; color:#fff; box-shadow:0 0 10px #2ecc71;}
 .sold {background:#444; color:#ddd; box-shadow:0 0 5px #000;}
 .preorder {background:#f39c12; color:#fff; box-shadow:0 0 10px #f39c12;}
 
-/* Prix / Boutons */
+/* Boutons pulsants */
 .product-price {
     background:#ff1a1a;
     color:#fff;
@@ -128,164 +116,97 @@ h2 {
     border-radius:12px;
     font-weight:bold;
     text-decoration:none;
-    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
-.product-price:hover {
-    background:#ff4d4d;
-    transform:scale(1.05);
-    box-shadow:0 0 15px #ff1a1a;
-}
-.soldout {
-    background:#333;
-    color:#bbb;
-    text-align:center;
-    padding:12px;
-    border-radius:12px;
-    font-weight:bold;
-    cursor:not-allowed;
-}
+.product-price:hover {transform:scale(1.1); box-shadow:0 0 20px #ff1a1a,0 0 40px #ff4d4d;}
+.soldout {background:#333; color:#bbb; text-align:center; padding:12px; border-radius:12px; font-weight:bold; cursor:not-allowed;}
 
 /* FAQ */
 .faq {margin:40px 0;}
-.faq-item {
-    background:#1e1e1e;
-    margin-bottom:10px;
-    border-radius:10px;
-    overflow:hidden;
-    transition:all 0.3s ease;
-}
-.faq-question {
-    padding:15px;
-    cursor:pointer;
-    font-weight:bold;
-    background:#2a2a2a;
-    transition:background 0.3s;
-    display:flex; justify-content:space-between; align-items:center;
-}
+.faq-item {background:#1e1e1e; margin-bottom:10px; border-radius:10px; overflow:hidden; transition:all 0.3s ease;}
+.faq-question {padding:15px; cursor:pointer; font-weight:bold; background:#2a2a2a; display:flex; justify-content:space-between; align-items:center;}
 .faq-question:hover {background:#333;}
-.faq-answer {
-    max-height:0;
-    overflow:hidden;
-    padding:0 15px;
-    color:#ccc;
-    transition:max-height 0.4s ease, padding 0.4s ease;
-}
+.faq-answer {max-height:0; overflow:hidden; padding:0 15px; color:#ccc; transition:max-height 0.4s ease, padding 0.4s ease;}
 .faq-item.active .faq-answer {max-height:200px; padding:15px;}
 
 /* Footer */
-footer {
-    text-align:center;
-    padding:25px;
-    background:#111;
-    margin-top:40px;
-    font-size:0.95em;
-    color:#aaa;
-    text-shadow:0 0 5px #000;
-}
+footer {text-align:center; padding:25px; background:#111; margin-top:40px; font-size:0.95em; color:#aaa; text-shadow:0 0 5px #000;}
 footer a {color:#ff4d4d; text-decoration:none;}
 footer a:hover {text-decoration:underline;}
 
-/* Responsive */
+/* WhatsApp flottant */
+#whatsapp-btn {
+    position:fixed; bottom:20px; right:20px;
+    background:#25D366; color:#fff; border-radius:50px;
+    padding:15px 20px; font-weight:bold; text-decoration:none;
+    box-shadow:0 0 15px #25D366; z-index:9999;
+    animation:pulse 1.5s infinite;
+}
+#whatsapp-btn:hover {transform:scale(1.2);}
+@keyframes pulse {0%,100%{transform:scale(1);}50%{transform:scale(1.1);}}
+@keyframes fadeUp {to{opacity:1; transform:translateY(0);}}
+
 @media(max-width:600px){
-    header{font-size:1.5em; padding:20px;}
-    h2{font-size:1.3em;}
+    .header-container {flex-direction:column; gap:10px;}
+    .logo {font-size:1.5em;}
 }
 </style>
 </head>
 <body>
 
-<header>🎮 Boutique Jeux & Cartes cadeaux 🎮</header>
-
-<nav>
+<header>
+<div class="header-container">
+  <div class="logo">WunderShop – Jeux & cartes cadeaux</div>
+  <nav class="menu">
     <a href="#cartes">Cartes PSN</a>
     <a href="#jeux">Jeux</a>
     <a href="#faq">FAQ</a>
-    <a href="#contact">Contact</a>
-</nav>
+    <a href="#contact">À propos</a>
+  </nav>
+</div>
+</header>
 
 <div class="container">
-    <h2 id="cartes">Cartes PSN</h2>
-    <div class="products-grid">
-        <div class="product">
-            <div class="product-name">Carte PSN 10 €</div>
-            <div class="badge sold">🚫 Épuisé</div>
-            <div class="soldout">Épuisé</div>
-        </div>
-        <div class="product">
-            <div class="product-name">Carte PSN 20 €</div>
-            <div class="badge sold">🚫 Épuisé</div>
-            <div class="soldout">Épuisé</div>
-        </div>
-        <div class="product">
-            <div class="product-name">Carte PSN 50 €</div>
-            <div class="badge instock">🟢 En stock</div>
-            <a class="product-price" href="https://wa.me/212662182959?text=Je+veux+acheter+Carte+PSN+50+€" target="_blank">530 DH</a>
-        </div>
-        <div class="product">
-            <div class="product-name">Carte PSN 80 €</div>
-            <div class="badge sold">🚫 Épuisé</div>
-            <div class="soldout">Épuisé</div>
-        </div>
-        <div class="product">
-            <div class="product-name">Carte PSN 100 €</div>
-            <div class="badge sold">🚫 Épuisé</div>
-            <div class="soldout">Épuisé</div>
-        </div>
-    </div>
 
-    <h2 id="jeux">Jeux</h2>
-    <div class="products-grid">
-        <div class="product">
-            <div class="product-name">Red Dead Redemption 2 (PS4/Xbox/PC)</div>
-            <div class="badge instock">🟢 En stock</div>
-            <a class="product-price" href="https://wa.me/212662182959?text=Je+veux+acheter+Red+Dead+Redemption+2" target="_blank">250 DH</a>
-        </div>
-        <div class="product">
-            <div class="product-name">FC 25 Standard (PC)</div>
-            <div class="badge instock">🟢 En stock</div>
-            <a class="product-price" href="https://wa.me/212662182959?text=Je+veux+acheter+FC+25+PC" target="_blank">150 DH</a>
-        </div>
-        <div class="product">
-            <div class="product-name">FC 25 Standard (PS5)</div>
-            <div class="badge instock">🟢 En stock</div>
-            <a class="product-price" href="https://wa.me/212662182959?text=Je+veux+acheter+FC+25+PS5" target="_blank">350 DH</a>
-        </div>
-    </div>
+<h2 id="cartes">Cartes PSN</h2>
+<div class="products-grid">
+  <div class="product"><div class="product-name">Carte PSN 10 €</div><div class="badge sold">🚫 Épuisé</div><div class="soldout">Épuisé</div></div>
+  <div class="product"><div class="product-name">Carte PSN 20 €</div><div class="badge sold">🚫 Épuisé</div><div class="soldout">Épuisé</div></div>
+  <div class="product"><div class="product-name">Carte PSN 50 €</div><div class="badge instock">🟢 En stock</div><a class="product-price" href="https://wa.me/212662182959?text=Je+veux+acheter+Carte+PSN+50+€" target="_blank">530 DH – Commander</a></div>
+  <div class="product"><div class="product-name">Carte PSN 80 €</div><div class="badge sold">🚫 Épuisé</div><div class="soldout">Épuisé</div></div>
+  <div class="product"><div class="product-name">Carte PSN 100 €</div><div class="badge sold">🚫 Épuisé</div><div class="soldout">Épuisé</div></div>
+</div>
 
-    <h2 id="faq">FAQ</h2>
-    <div class="faq">
-        <div class="faq-item">
-            <div class="faq-question">💳 Quels moyens de paiement acceptez-vous ?</div>
-            <div class="faq-answer">Nous acceptons Cash Plus et CIH. Paiement simple et sécurisé.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">⚡ Quand vais-je recevoir mon code ?</div>
-            <div class="faq-answer">Livraison instantanée après confirmation du paiement. Pour les précommandes, le code est livré le jour de la sortie.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">🔐 Est-ce sécurisé ?</div>
-            <div class="faq-answer">Oui. Aucune donnée bancaire n’est stockée. Tous nos codes sont vérifiés avant livraison.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">📞 Comment puis-je vous contacter ?</div>
-            <div class="faq-answer">Vous pouvez nous écrire sur WhatsApp au <a href="https://wa.me/212662182959" target="_blank">+212 662 182 959</a>. Nous répondons 7j/7.</div>
-        </div>
-    </div>
+<h2 id="jeux">Jeux</h2>
+<div class="products-grid">
+  <div class="product"><div class="product-name">Red Dead Redemption 2 (PS4/Xbox/PC)</div><div class="badge instock">🟢 En stock</div><a class="product-price" href="https://wa.me/212662182959?text=Je+veux+acheter+Red+Dead+Redemption+2" target="_blank">250 DH – Commander</a></div>
+  <div class="product"><div class="product-name">FC 25 Standard (PC)</div><div class="badge instock">🟢 En stock</div><a class="product-price" href="https://wa.me/212662182959?text=Je+veux+acheter+FC+25+PC" target="_blank">150 DH – Commander</a></div>
+  <div class="product"><div class="product-name">FC 25 Standard (PS5)</div><div class="badge instock">🟢 En stock</div><a class="product-price" href="https://wa.me/212662182959?text=Je+veux+acheter+FC+25+PS5" target="_blank">350 DH – Commander</a></div>
+</div>
+
+<h2 id="faq">FAQ</h2>
+<div class="faq">
+  <div class="faq-item"><div class="faq-question">💳 Quels moyens de paiement acceptez-vous ?</div><div class="faq-answer">Nous acceptons Cash Plus et CIH. Paiement simple et sécurisé.</div></div>
+  <div class="faq-item"><div class="faq-question">⚡ Quand vais-je recevoir mon code ?</div><div class="faq-answer">Livraison instantanée après confirmation du paiement.</div></div>
+  <div class="faq-item"><div class="faq-question">🔐 Est-ce sécurisé ?</div><div class="faq-answer">Oui. Aucune donnée bancaire n’est stockée. Tous nos codes sont vérifiés avant livraison.</div></div>
+  <div class="faq-item"><div class="faq-question">📞 Comment puis-je vous contacter ?</div><div class="faq-answer">Vous pouvez nous écrire sur WhatsApp au <a href="https://wa.me/212662182959" target="_blank">+212 662 182 959</a>. Nous répondons 7j/7.</div></div>
+</div>
+
 </div>
 
 <footer id="contact">
-    Paiement simple par Cash Plus ou CIH | Livraison instantanée<br>
-    Contact WhatsApp : <a href="https://wa.me/212662182959">+212 662 182 959</a><br>
-    <a href="story.html" style="color:#ff4d4d; text-decoration:underline;">À propos</a>
-    <p style="margin-top:15px; font-size:0.85em; color:#777;">
-        © 2025 WunderShop – Tous droits réservés
-    </p>
+Paiement simple par Cash Plus ou CIH | Livraison instantanée<br>
+Contact WhatsApp : <a href="https://wa.me/212662182959">+212 662 182 959</a><br>
+<a href="story.html" style="color:#ff4d4d; text-decoration:underline;">À propos</a>
+<p style="margin-top:15px; font-size:0.85em; color:#777;">
+    © 2025 WunderShop – Tous droits réservés
+</p>
 </footer>
 
+<a id="whatsapp-btn" href="https://wa.me/212662182959" target="_blank">💬 Commander</a>
+
 <script>
-document.querySelectorAll(".faq-question").forEach(q=>{
-    q.addEventListener("click",()=>{q.parentElement.classList.toggle("active");});
-});
+document.querySelectorAll(".faq-question").forEach(q=>{q.addEventListener("click",()=>{q.parentElement.classList.toggle("active");});});
 document.querySelectorAll('.product').forEach((p,i)=>{p.style.animationDelay=`${i*0.1}s`;});
 </script>
 
